@@ -1,0 +1,32 @@
+<template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title text-info">Добавить новый заказ</h4>
+    <div class="nav-item" (click)="selectedNavItem(100500)">nav 1 (click me)</div>
+    <div class="nav-item" (click)="selectedNavItem(1212)">nav 2 (click me)</div>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <form (ngSubmit)="onSubmit()" *ngIf="active" #orderForm="ngForm">
+        <div class="form-group">
+          <label for="title" class="label">Описание</label>
+          <input type="text" class="form-control" id="title" [(ngModel)]="model.title" required name="title"
+                 (ngModelChange)="model.title = $event" #spy #title="ngModel">
+          <div [hidden]="title.valid || title.pristine"
+               class="alert alert-danger">
+            Title is required
+          </div>
+        </div>
+        <button type="submit" class="btn btn-secondary" [disabled]="!orderForm.form.valid">Submit</button>
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Закрыть</button>
+
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+  </div>
+</template>
+
+<button class="btn btn-primary" (click)="open(content)">Новый заказ</button>

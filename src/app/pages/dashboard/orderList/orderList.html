@@ -1,0 +1,10 @@
+<div class="order-list-container">
+  <ul class="order-list">
+    <li *ngFor="let order of orders" [ngClass]="{id: order.id}">
+      <div class="blur-container"><div class="blur-box"></div></div>
+      <label class="todo-checkbox custom-checkbox custom-input-success">
+        <span class="cut-with-dots">{{ order.title }}</span>
+      </label>
+    </li>
+  </ul>
+</div>
