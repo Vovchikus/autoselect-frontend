@@ -3,12 +3,14 @@ import {BaThemeConfigProvider} from '../../../theme';
 import {OrderListService} from './orderList.service';
 import {Order} from '../../../entities/order'
 import {ApiService} from "../../../api/api.service";
+import {Modal} from "../modal/modal.component";
 
 @Component({
     selector: 'orderList',
     providers: [ApiService],
     styles: [require('./orderList.scss')],
     template: require('./orderList.html'),
+    directives: [Modal]
 })
 
 export class OrderList {
@@ -23,6 +25,12 @@ export class OrderList {
 
     ngOnInit() {
         this.getOrders();
+    }
+
+    private addOrder($order) {
+        this.apiService.order($order).subscribe(
+            order  => this.orders.push(order)
+        );
     }
 
     private getOrders() {
