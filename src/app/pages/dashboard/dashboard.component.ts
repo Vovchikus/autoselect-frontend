@@ -4,9 +4,10 @@ import {Component, ViewEncapsulation} from '@angular/core';
   selector: 'dashboard',
   encapsulation: ViewEncapsulation.None,
   styles: [require('./dashboard.scss')],
-  template: require('./dashboard.html'),
+  template: require('./dashboard.html')
 })
 export class Dashboard {
+
   constructor() {
   }
 

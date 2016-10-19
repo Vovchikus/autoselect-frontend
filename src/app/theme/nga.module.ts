@@ -1,4 +1,4 @@
-import { NgModule }      from '@angular/core';
+import { NgModule, ModuleWithProviders }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -19,6 +19,7 @@ import {
   BaCheckbox,
   BaContentTop,
   BaFullCalendar,
+  BaMenuItem,
   BaMenu,
   BaMsgCenter,
   BaMultiCheckbox,
@@ -26,6 +27,8 @@ import {
   BaPictureUploader,
   BaSidebar
 } from './components';
+
+import { BaCardBlur } from './components/baCard/baCardBlur.directive';
 
 import {
   BaScrollPosition,
@@ -58,6 +61,7 @@ const NGA_COMPONENTS = [
   BaCheckbox,
   BaContentTop,
   BaFullCalendar,
+  BaMenuItem,
   BaMenu,
   BaMsgCenter,
   BaMultiCheckbox,
@@ -69,7 +73,8 @@ const NGA_COMPONENTS = [
 const NGA_DIRECTIVES = [
   BaScrollPosition,
   BaSlimScroll,
-  BaThemeRun
+  BaThemeRun,
+  BaCardBlur
 ];
 
 const NGA_PIPES = [
@@ -101,12 +106,6 @@ const NGA_VALIDATORS = [
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [
-    BaThemeConfigProvider,
-    BaThemeConfig,
-    ...NGA_VALIDATORS,
-    ...NGA_SERVICES
-  ],
   exports: [
     ...NGA_PIPES,
     ...NGA_DIRECTIVES,
@@ -114,4 +113,15 @@ const NGA_VALIDATORS = [
   ]
 })
 export class NgaModule {
+  static forRoot(): ModuleWithProviders {
+    return <ModuleWithProviders> {
+      ngModule: NgaModule,
+      providers: [
+        BaThemeConfigProvider,
+        BaThemeConfig,
+        ...NGA_VALIDATORS,
+        ...NGA_SERVICES
+      ],
+    };
+  }
 }

@@ -39,10 +39,31 @@
   }
 }
 
-
+.form-control {
+  color: $content-text;
+  @include placeholderStyle($content-text, 0.7);
+  border: 1px solid $input-border;
+  border-radius: 5px;
+  background-color: $input-background;
+  box-shadow: none;
+  font-size: 14px;
+  &:focus {
+    box-shadow: none;
+    border-color: $primary-bg;
+    background: $input-background;
+  }
+}
 
 select.form-control {
   padding-left: 8px;
+}
+
+select.form-control:not([multiple]) option {
+  color: $dropdown-text;
+}
+
+select.form-control[multiple] option {
+  color: $default-text;
 }
 
 textarea.form-control {
