@@ -12,7 +12,7 @@ import {FormsModule} from "@angular/forms";
 })
 export class Modal {
 
-    constructor(private modalService:NgbModal, private apiService:ApiService, private form: FormsModule) {
+    constructor(private modalService:NgbModal, private form: FormsModule) {
     }
 
     public closeResult:string;

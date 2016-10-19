@@ -15,6 +15,7 @@ import { BaThemeConfig } from './theme/theme.config';
   styles: [require('normalize.css'), require('./app.scss')],
   template: `
     <main [ngClass]="{'menu-collapsed': isMenuCollapsed}" baThemeRun>
+    <template ngbModalContainer></template>
       <div class="additional-bg"></div>
       <router-outlet></router-outlet>
     </main>
